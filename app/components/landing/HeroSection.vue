@@ -4,6 +4,8 @@
  * tombol aksi ganda, dan live interactive preview dashboard eksekutif.
  */
 
+import VizExecutiveDashboard from '~/components/landing/viz/VizExecutiveDashboard.vue'
+
 defineEmits<{
   'open-lead-modal': []
 }>()
@@ -100,7 +102,7 @@ const { currentHero } = useMustakaContent()
               aria-hidden="true"
             />
             <!-- High density executive dashboard component -->
-            <LandingVizVizExecutiveDashboard />
+            <VizExecutiveDashboard />
           </div>
         </div>
 

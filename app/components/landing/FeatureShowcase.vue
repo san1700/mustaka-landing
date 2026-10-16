@@ -11,6 +11,12 @@
  */
 
 import { features, type Feature, type FeatureVisualizationType } from '~/data/features'
+import VizStudent360 from '~/components/landing/viz/VizStudent360.vue'
+import VizAuditLog from '~/components/landing/viz/VizAuditLog.vue'
+import VizLearningGroup from '~/components/landing/viz/VizLearningGroup.vue'
+import VizTeacherAssignment from '~/components/landing/viz/VizTeacherAssignment.vue'
+import VizMultiTenant from '~/components/landing/viz/VizMultiTenant.vue'
+import VizAnnouncement from '~/components/landing/viz/VizAnnouncement.vue'
 
 // ── State ────────────────────────────────────────────────────────────────────
 const activeId = ref<string>(features[0]!.id)
@@ -20,14 +26,13 @@ const activeFeature = computed<Feature>(
 )
 
 // ── Viz component map ────────────────────────────────────────────────────────
-// Menggunakan resolveComponent agar bundler tidak tree-shake komponen ini.
-const vizMap: Record<FeatureVisualizationType, ReturnType<typeof resolveComponent>> = {
-  student360: resolveComponent('LandingVizVizStudent360'),
-  auditLog: resolveComponent('LandingVizVizAuditLog'),
-  learningGroup: resolveComponent('LandingVizVizLearningGroup'),
-  teacherAssignment: resolveComponent('LandingVizVizTeacherAssignment'),
-  multiTenant: resolveComponent('LandingVizVizMultiTenant'),
-  announcement: resolveComponent('LandingVizVizAnnouncement'),
+const vizMap: Record<FeatureVisualizationType, any> = {
+  student360: VizStudent360,
+  auditLog: VizAuditLog,
+  learningGroup: VizLearningGroup,
+  teacherAssignment: VizTeacherAssignment,
+  multiTenant: VizMultiTenant,
+  announcement: VizAnnouncement,
 }
 
 const currentViz = computed(() => vizMap[activeFeature.value.visualization])
