@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Brand Colors — muted, editorial, no rainbow gradients */
+  --color-brand-50: oklch(0.98 0.005 250);
+  --color-brand-100: oklch(0.95 0.012 250);
+  --color-brand-200: oklch(0.88 0.025 250);
+  --color-brand-300: oklch(0.78 0.045 250);
+  --color-brand-400: oklch(0.65 0.07 250);
+  --color-brand-500: oklch(0.52 0.09 250);
+  --color-brand-600: oklch(0.42 0.1 250);
+  --color-brand-700: oklch(0.34 0.09 250);
+  --color-brand-800: oklch(0.26 0.07 250);
+  --color-brand-900: oklch(0.18 0.05 250);
+
+  /* Structural neutral tones (stone-based) */
+  --color-canvas: oklch(0.99 0 0);
+  --color-surface: oklch(0.975 0.003 60);
+  --color-border: oklch(0.9 0.006 60);
+  --color-border-subtle: oklch(0.94 0.004 60);
+
+  /* Status badge colours */
+  --color-status-active: oklch(0.44 0.14 145);
+  --color-status-active-bg: oklch(0.95 0.04 145);
+  --color-status-transferred: oklch(0.5 0.12 250);
+  --color-status-transferred-bg: oklch(0.94 0.04 250);
+  --color-status-dropped: oklch(0.5 0.14 28);
+  --color-status-dropped-bg: oklch(0.96 0.04 28);
+  --color-status-graduated: oklch(0.48 0.1 310);
+  --color-status-graduated-bg: oklch(0.96 0.04 310);
+}
+
+/* ─── Base reset ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: oklch(0.14 0.01 60);
+  font-family: var(--font-family-sans);
+  line-height: 1.6;
+}
+
+/* ─── Utilities ──────────────────────────────────────────── */
+.font-mono { font-family: var(--font-family-mono); }
+.tabular-nums { font-variant-numeric: tabular-nums; }
