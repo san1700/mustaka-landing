@@ -79,13 +79,22 @@ function submitLead() {
         >
           <!-- Header -->
           <div class="px-6 py-5 border-b border-stone-100 flex items-center justify-between bg-stone-50/60">
-            <div>
-              <h3 id="lead-modal-title" class="text-lg font-bold text-stone-900 tracking-tight">
-                Jadwalkan Demo Mustaka EduOS
-              </h3>
-              <p class="text-xs text-stone-500 mt-0.5">
-                Konsultasikan kebutuhan digitalisasi sekolah langsung dengan tim kami.
-              </p>
+            <div class="flex items-center gap-3">
+              <img
+                src="/logo-icon.png"
+                alt="Logo Mustaka"
+                class="w-8 h-8 object-contain shrink-0"
+                width="32"
+                height="32"
+              />
+              <div>
+                <h3 id="lead-modal-title" class="text-lg font-bold text-stone-900 tracking-tight">
+                  Jadwalkan Demo Mustaka EduOS
+                </h3>
+                <p class="text-xs text-stone-500 mt-0.5">
+                  Konsultasikan kebutuhan digitalisasi sekolah langsung dengan tim kami.
+                </p>
+              </div>
             </div>
             <button
               class="w-8 h-8 rounded-lg text-stone-400 hover:text-stone-700 hover:bg-stone-200/60 flex items-center justify-center transition-colors"

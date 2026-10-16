@@ -32,10 +32,14 @@ const legalLinks = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         <!-- Brand Column -->
         <div class="lg:col-span-2 space-y-4">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center shrink-0">
-              <UIcon name="lucide:graduation-cap" class="w-4 h-4 text-white" />
-            </div>
+          <div class="flex items-center gap-2.5">
+            <img
+              src="/logo-icon.png"
+              alt="Logo Mustaka"
+              class="w-8 h-8 object-contain"
+              width="32"
+              height="32"
+            />
             <span class="text-base font-bold text-stone-900 tracking-tight">Mustaka</span>
             <span class="text-xs font-semibold px-2 py-0.5 rounded bg-stone-100 text-stone-600">EduOS</span>
           </div>

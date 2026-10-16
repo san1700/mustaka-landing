@@ -31,15 +31,16 @@ function scrollTo(href: string) {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-14">
         <!-- Logo -->
-        <a href="/" class="flex items-center gap-2 group" aria-label="Mustaka EduOS — Halaman Utama">
-          <div
-            class="w-7 h-7 rounded-md bg-emerald-600 flex items-center justify-center shrink-0"
-            aria-hidden="true"
-          >
-            <UIcon name="lucide:graduation-cap" class="w-4 h-4 text-white" />
-          </div>
-          <span class="text-sm font-bold text-stone-900 tracking-tight">Mustaka</span>
-          <span class="text-xs font-medium text-stone-400 hidden sm:inline">EduOS</span>
+        <a href="/" class="flex items-center gap-2.5 group" aria-label="Mustaka EduOS — Halaman Utama">
+          <img
+            src="/logo-icon.png"
+            alt="Logo Mustaka"
+            class="w-7 h-7 object-contain transition-transform group-hover:scale-105"
+            width="28"
+            height="28"
+          />
+          <span class="text-base font-bold text-stone-900 tracking-tight">Mustaka</span>
+          <span class="text-xs font-semibold px-1.5 py-0.5 rounded bg-stone-100 text-stone-600 hidden sm:inline">EduOS</span>
         </a>
 
         <!-- Desktop nav -->

@@ -38,6 +38,7 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: '%s — Mustaka EduOS',
       link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
           rel: 'preconnect',

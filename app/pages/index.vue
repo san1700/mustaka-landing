@@ -36,6 +36,9 @@ useSeoMeta({
   ogDescription: currentHero.value.subCopy,
   ogType: 'website',
   ogSiteName: siteConfig.productName,
+  ogImage: '/logo.png',
+  twitterCard: 'summary_large_image',
+  twitterImage: '/logo.png',
 })
 </script>
 
