@@ -1,5 +1,8 @@
 <script setup lang="ts">
-// FaqSection — Seksi pertanyaan umum (FAQ) dengan accordion interaktif.
+/**
+ * FaqSection — Accordion FAQ Interaktif.
+ * Menjawab keraguan utama Kepala Sekolah, Yayasan, dan Staf TU.
+ */
 
 const { faqs } = useMustakaContent()
 
@@ -13,20 +16,21 @@ function toggleFaq(id: string) {
 <template>
   <section
     id="faq"
-    class="py-20 bg-white border-b border-stone-200"
+    class="bg-[#FAFAFA] border-b border-[#E2EAE6] scroll-mt-20 py-20 lg:py-28"
     aria-label="Pertanyaan yang Sering Diajukan"
   >
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-stone-200 bg-stone-50 text-xs font-semibold text-stone-600 mb-4 tracking-wider uppercase">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF7EC] border border-[#C4E3B9] text-xs font-bold text-[#2D7A14] mb-4">
+          <UIcon name="lucide:help-circle" class="w-3.5 h-3.5" />
           Tanya Jawab
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
+        </span>
+        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#11181C] tracking-tight leading-tight">
           Pertanyaan yang Sering Diajukan
         </h2>
-        <p class="mt-4 text-base text-stone-600">
-          Semua yang perlu Anda ketahui tentang implementasi, keamanan data, dan migrasi sistem ke Mustaka EduOS.
+        <p class="mt-4 text-base sm:text-lg text-[#455A50] leading-relaxed">
+          Semua jawaban seputar keamanan data, migrasi file Excel, fleksibilitas pesantren, dan dukungan server cloud.
         </p>
       </div>
 
@@ -35,20 +39,31 @@ function toggleFaq(id: string) {
         <div
           v-for="faq in faqs"
           :key="faq.id"
-          class="rounded-xl border border-stone-200 bg-stone-50/50 transition-all duration-200 overflow-hidden"
-          :class="{ 'bg-white shadow-sm border-stone-300': openFaqId === faq.id }"
+          class="rounded-2xl border transition-all duration-200 overflow-hidden"
+          :class="[
+            openFaqId === faq.id
+              ? 'bg-white border-[#5EC234] shadow-md ring-1 ring-[#5EC234]/30'
+              : 'bg-white border-[#E2EAE6] hover:border-[#C4E3B9]',
+          ]"
         >
           <button
             class="w-full text-left px-6 py-5 flex items-center justify-between gap-4 cursor-pointer focus:outline-none"
             :aria-expanded="openFaqId === faq.id"
             @click="toggleFaq(faq.id)"
           >
-            <span class="text-base font-semibold text-stone-900 leading-snug">
+            <span
+              class="text-base sm:text-lg font-bold tracking-tight leading-snug transition-colors"
+              :class="openFaqId === faq.id ? 'text-[#11181C]' : 'text-[#11181C]'"
+            >
               {{ faq.question }}
             </span>
             <span
-              class="shrink-0 w-7 h-7 rounded-full bg-stone-100 flex items-center justify-center text-stone-600 transition-transform duration-200"
-              :class="{ 'rotate-180 bg-emerald-50 text-emerald-600': openFaqId === faq.id }"
+              class="shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-200"
+              :class="[
+                openFaqId === faq.id
+                  ? 'bg-[#5EC234] text-white rotate-180'
+                  : 'bg-[#EFF7EC] text-[#5EC234] border border-[#C4E3B9]',
+              ]"
             >
               <UIcon name="lucide:chevron-down" class="w-4 h-4" />
             </span>
@@ -56,30 +71,11 @@ function toggleFaq(id: string) {
 
           <div
             v-show="openFaqId === faq.id"
-            class="px-6 pb-6 pt-1 text-sm text-stone-600 leading-relaxed border-t border-stone-100/80"
+            class="px-6 pb-6 pt-1 text-sm sm:text-base text-[#455A50] leading-relaxed border-t border-[#F3F8F5]"
           >
             {{ faq.answer }}
           </div>
         </div>
-      </div>
-
-      <!-- Still Have Questions Banner -->
-      <div class="mt-12 p-6 rounded-xl border border-stone-200 bg-stone-50 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div>
-          <h3 class="text-sm font-semibold text-stone-900">
-            Punya pertanyaan lain yang belum terjawab?
-          </h3>
-          <p class="text-xs text-stone-500 mt-1">
-            Tim konsultan pendidikan kami siap membantu menjelaskan secara mendalam via WhatsApp.
-          </p>
-        </div>
-        <a
-          href="#pricing"
-          class="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white border border-stone-200 text-xs font-semibold text-stone-700 hover:bg-stone-50 transition-colors shadow-xs"
-        >
-          <UIcon name="lucide:message-circle-question" class="w-4 h-4 text-emerald-600" />
-          Hubungi Konsultan
-        </a>
       </div>
     </div>
   </section>

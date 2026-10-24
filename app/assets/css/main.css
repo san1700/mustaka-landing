@@ -1,37 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  /* Typography */
-  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* ─── Typography ───────────────────────────────────────── */
+  --font-family-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-family-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
 
-  /* Brand Colors — muted, editorial, no rainbow gradients */
-  --color-brand-50: oklch(0.98 0.005 250);
-  --color-brand-100: oklch(0.95 0.012 250);
-  --color-brand-200: oklch(0.88 0.025 250);
-  --color-brand-300: oklch(0.78 0.045 250);
-  --color-brand-400: oklch(0.65 0.07 250);
-  --color-brand-500: oklch(0.52 0.09 250);
-  --color-brand-600: oklch(0.42 0.1 250);
-  --color-brand-700: oklch(0.34 0.09 250);
-  --color-brand-800: oklch(0.26 0.07 250);
-  --color-brand-900: oklch(0.18 0.05 250);
+  /* ─── Mustaka Brand Palette (Figma exact) ──────────────── */
+  --color-brand:        #5EC234;   /* Lime/Emerald green — primary accent    */
+  --color-brand-dark:   #4BAB26;   /* Hover state                           */
+  --color-brand-darker: #3A8A1D;   /* Active / pressed                      */
+  --color-brand-ring:   #5EC23466; /* Focus ring                            */
 
-  /* Structural neutral tones (stone-based) */
-  --color-canvas: oklch(0.99 0 0);
-  --color-surface: oklch(0.975 0.003 60);
-  --color-border: oklch(0.9 0.006 60);
-  --color-border-subtle: oklch(0.94 0.004 60);
+  --color-mint:         #EFF7EC;   /* Soft mint — card & badge surface       */
+  --color-mint-dark:    #DFF0D8;   /* Slightly deeper mint                  */
+  --color-mint-border:  #C4E3B9;   /* Mint card border                      */
 
-  /* Status badge colours */
-  --color-status-active: oklch(0.44 0.14 145);
-  --color-status-active-bg: oklch(0.95 0.04 145);
-  --color-status-transferred: oklch(0.5 0.12 250);
-  --color-status-transferred-bg: oklch(0.94 0.04 250);
-  --color-status-dropped: oklch(0.5 0.14 28);
-  --color-status-dropped-bg: oklch(0.96 0.04 28);
-  --color-status-graduated: oklch(0.48 0.1 310);
-  --color-status-graduated-bg: oklch(0.96 0.04 310);
+  --color-charcoal:     #11181C;   /* Deep charcoal — primary text & hero bg */
+  --color-charcoal-80:  #1E2B31;   /* Slightly lighter charcoal              */
+
+  --color-forest-900:   #133019;   /* Forest gradient start                 */
+  --color-forest-700:   #214D28;   /* Forest gradient end                   */
+  --color-forest-500:   #2E6B38;   /* Forest mid-tone                       */
+  --color-forest-300:   #3D9B4D;   /* Forest light accent                   */
+
+  /* ─── Surface / Structure ─────────────────────────────── */
+  --color-canvas:       #FFFFFF;
+  --color-surface:      #FAFAFA;   /* Main page background                  */
+  --color-surface-2:    #F3F8F5;   /* Section alternate background          */
+  --color-border:       #E2EAE6;   /* Standard border                       */
+  --color-border-subtle: #EDF3EF;  /* Subtle / inner divider                */
+
+  /* ─── Text ─────────────────────────────────────────────── */
+  --color-text-primary:   #11181C;
+  --color-text-secondary: #455A50;
+  --color-text-muted:     #7A9589;
+
+  /* ─── Status badges ────────────────────────────────────── */
+  --color-status-active:           #5EC234;
+  --color-status-active-bg:        #EFF7EC;
+  --color-status-transferred:      #3B82F6;
+  --color-status-transferred-bg:   #EFF6FF;
+  --color-status-dropped:          #EF4444;
+  --color-status-dropped-bg:       #FEF2F2;
+  --color-status-graduated:        #8B5CF6;
+  --color-status-graduated-bg:     #F5F3FF;
 }
 
 /* ─── Base reset ─────────────────────────────────────────── */
@@ -40,15 +52,30 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-canvas);
-  color: oklch(0.14 0.01 60);
+  background-color: var(--color-surface);
+  color: var(--color-charcoal);
   font-family: var(--font-family-sans);
   line-height: 1.6;
 }
 
 /* ─── Utilities ──────────────────────────────────────────── */
-.font-mono { font-family: var(--font-family-mono); }
-.tabular-nums { font-variant-numeric: tabular-nums; }
+.font-mono        { font-family: var(--font-family-mono); }
+.tabular-nums     { font-variant-numeric: tabular-nums; }
+
+/* ─── Mustaka custom animations ──────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-6px); }
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float     { animation: float-y 3s ease-in-out infinite; }
+.animate-float-slow{ animation: float-y 4.5s ease-in-out infinite; }
+.animate-slide-up  { animation: slide-up 0.45s ease-out both; }

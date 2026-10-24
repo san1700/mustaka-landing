@@ -2,21 +2,17 @@
 /**
  * index.vue — Landing page utama Mustaka EduOS.
  *
- * Mengorkestrasi 11 bagian landing page sesuai Blueprint Mustaka:
- * 1.  TheNavbar               (Sticky navigation & portal link)
- * 2.  HeroSection             (Headline, sub-copy, dual CTA & executive dashboard preview)
- * 3.  TrustStrip              (Pilar 3 segmen institusi pendidikan)
- * 4.  ProblemSection          (5 masalah nyata sekolah vs solusi Mustaka)
- * 5.  TransformationSection   (Tabel visual Sebelum vs Sesudah)
- * 6.  FeatureShowcase         (Kesiswaan 360, Rombel/Halaqah, Guru, & Multi-tenant)
- * 7.  UseCaseSection          (Solusi K-12 vs Pesantren)
- * 8.  PricingSection          (Paket Starter, Pro, Enterprise transparan)
- * 9.  FaqSection              (Accordion keraguan migrasi, RLS & cloud)
- * 10. CtaBanner               (Modernisasi Sekolah & Yayasan Sekarang)
- * 11. TheFooter               (Navigasi, legalitas & kontak sales)
- *
- * Plus:
- * - LeadModal (Modal penangkap lead cepat via WhatsApp)
+ * Mengikuti urutan visual persis dari desain Figma & mustaka_lp.md:
+ * 1. Header - Sticky Navbar (`#fitur`, `#solusi`, `#transformasi`, `#harga`, `#faq`)
+ * 2. Hero Section (Headline + portal.mustaka.id Profil Siswa 360° + 3 floating pills)
+ * 3. Section - Trust Strip (Bar logo institusi pendidikan)
+ * 4. Core Features Section (Grid 4 kartu fitur soft mint dengan panah bulat)
+ * 5. Section - Mid-Page Forest Green ("Masih Bergantung pada File Excel yang Tercecer?")
+ * 6. Institution Pillars Section (Kontainer gelap 3 kolom K-12, Pesantren, Yayasan)
+ * 7. Transformasi & FAQ Section (Sebelum vs Sesudah Mustaka & Accordion FAQ)
+ * 8. Pricing Section (3 kartu harga: Starter, Pro highlight gelap, Enterprise)
+ * 9. Section - Pre-Footer Mint CTA & Main Footer
+ * 10. Dialog - Demo Scheduling Modal Overlay (Fast WhatsApp Lead Flow)
  */
 
 const { siteConfig, currentHero } = useMustakaContent()
@@ -43,43 +39,41 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="min-h-screen bg-stone-50 text-stone-900 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900">
-    <!-- Bagian 1: Sticky Navbar -->
+  <div class="min-h-screen bg-[#FAFAFA] text-[#11181C] font-sans antialiased selection:bg-[#EFF7EC] selection:text-[#2D7A14]">
+    <!-- 1. Header: Sticky Navbar -->
     <LandingTheNavbar @open-lead-modal="openLeadModal" />
 
     <main id="main-content">
-      <!-- Bagian 2: Hero Section -->
+      <!-- 2. Hero Section -->
       <LandingHeroSection @open-lead-modal="openLeadModal" />
 
-      <!-- Bagian 3: Trust Strip / Pilar 3 Segmen Institusi -->
+      <!-- 3. Section: Trust Strip (Bar logo institusi) -->
       <LandingTrustStrip />
 
-      <!-- Bagian 4: Problem Section -->
-      <LandingProblemSection />
-
-      <!-- Bagian 5: Transformation Section -->
-      <LandingTransformationSection />
-
-      <!-- Bagian 6: Feature Showcase -->
+      <!-- 4. Core Features Section (Grid 4 kartu mint + panah bulat) -->
       <LandingFeatureShowcase />
 
-      <!-- Bagian 7: Solution Use Case Section -->
+      <!-- 5. Section: Mid-Page Forest Green Banner -->
+      <LandingProblemSection />
+
+      <!-- 6. Institution Pillars Section (Kontainer gelap 3 kolom) -->
       <LandingUseCaseSection @open-lead-modal="openLeadModal" />
 
-      <!-- Bagian 8: Pricing & Transparency Section -->
-      <LandingPricingSection @open-lead-modal="openLeadModal" />
-
-      <!-- Bagian 9: FAQ Section -->
+      <!-- 7. Transformasi & FAQ Section -->
+      <LandingTransformationSection />
       <LandingFaqSection />
 
-      <!-- Bagian 10: Final CTA Banner -->
+      <!-- 8. Pricing Section (3 kartu harga, Pro highlight gelap) -->
+      <LandingPricingSection @open-lead-modal="openLeadModal" />
+
+      <!-- 9. Section: Pre-Footer Mint CTA -->
       <LandingCtaBanner @open-lead-modal="openLeadModal" />
     </main>
 
-    <!-- Bagian 11: Footer Lengkap -->
+    <!-- Main Footer -->
     <LandingTheFooter />
 
-    <!-- Modal Fast Lead Capture ke WhatsApp -->
+    <!-- Dialog: Demo Scheduling Modal Overlay -->
     <LandingLeadModal v-model="isLeadModalOpen" />
   </div>
 </template>

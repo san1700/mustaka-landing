@@ -1,21 +1,24 @@
 <script setup lang="ts">
-// TheFooter — Seksi footer lengkap dengan navigasi, informasi legal, dan kontak.
+/**
+ * TheFooter — Main Footer Component.
+ * Bersih, rapi, dengan warna Deep Charcoal #11181C, aksen #5EC234, dan tautan lengkap.
+ */
 
 const { siteConfig } = useMustakaContent()
 const currentYear = new Date().getFullYear()
 
 const productLinks = [
-  { label: 'Fitur Unggulan', href: '#feature-showcase' },
-  { label: 'Sekolah Formal K-12', href: '#use-cases' },
-  { label: 'Pesantren & Boarding', href: '#use-cases' },
-  { label: 'Paket & Investasi', href: '#pricing' },
+  { label: 'Fitur Platform', href: '#fitur' },
+  { label: 'Pilar Institusi', href: '#solusi' },
+  { label: 'Transformasi Sistem', href: '#transformasi' },
+  { label: 'Paket & Investasi', href: '#harga' },
   { label: 'Pertanyaan Umum', href: '#faq' },
 ]
 
 const companyLinks = [
-  { label: 'Tentang Kami', href: '#problems' },
+  { label: 'Masalah yang Diselesaikan', href: '#masalah' },
   { label: 'Portal Aplikasi', href: siteConfig.appUrl, external: true },
-  { label: 'Status Server', href: '#' },
+  { label: 'Status Sistem', href: '#' },
   { label: 'Dokumentasi Sistem', href: '#' },
 ]
 
@@ -27,8 +30,8 @@ const legalLinks = [
 </script>
 
 <template>
-  <footer class="bg-white border-t border-stone-200" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+  <footer class="bg-white border-t border-[#E2EAE6]" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
         <!-- Brand Column -->
         <div class="lg:col-span-2 space-y-4">
@@ -40,35 +43,37 @@ const legalLinks = [
               width="32"
               height="32"
             />
-            <span class="text-base font-bold text-stone-900 tracking-tight">Mustaka</span>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-stone-100 text-stone-600">EduOS</span>
+            <span class="text-lg font-extrabold text-[#11181C] tracking-tight">Mustaka</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded-md bg-[#EFF7EC] text-[#2D7A14] border border-[#C4E3B9]">
+              EduOS
+            </span>
           </div>
 
-          <p class="text-sm text-stone-500 leading-relaxed max-w-sm">
-            {{ siteConfig.tagline }}. Platform manajemen kesiswaan, rombel, pengajar, dan multi-unit yayasan untuk efisiensi pendidikan Indonesia.
+          <p class="text-sm text-[#455A50] leading-relaxed max-w-sm">
+            {{ siteConfig.tagline }}. Solusi terpadu manajemen kesiswaan 360°, rombel, halaqah pesantren, dan pengawasan multi-tenant yayasan di Indonesia.
           </p>
 
-          <div class="pt-2 flex items-center gap-3 text-stone-400">
+          <div class="pt-2">
             <a
               :href="`https://wa.me/${siteConfig.salesWhatsapp}`"
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-xs text-stone-600 hover:text-emerald-600 transition-colors"
+              class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#EFF7EC] border border-[#C4E3B9] text-xs font-bold text-[#2D7A14] hover:bg-[#E5F3E1] transition-colors"
             >
-              <UIcon name="lucide:phone" class="w-4 h-4 text-emerald-600" />
-              <span>WhatsApp: {{ siteConfig.salesWhatsappDisplay }}</span>
+              <UIcon name="lucide:phone" class="w-4 h-4 text-[#5EC234]" />
+              <span>WhatsApp Sales: {{ siteConfig.salesWhatsappDisplay }}</span>
             </a>
           </div>
         </div>
 
         <!-- Links: Product -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4">
-            Produk
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#11181C] mb-4">
+            Navigasi
           </h4>
-          <ul class="space-y-2.5 text-sm text-stone-500">
+          <ul class="space-y-2.5 text-sm text-[#455A50]">
             <li v-for="link in productLinks" :key="link.label">
-              <a :href="link.href" class="hover:text-stone-900 transition-colors">
+              <a :href="link.href" class="hover:text-[#11181C] hover:underline transition-colors">
                 {{ link.label }}
               </a>
             </li>
@@ -77,19 +82,19 @@ const legalLinks = [
 
         <!-- Links: Platform & Ekosistem -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#11181C] mb-4">
             Ekosistem
           </h4>
-          <ul class="space-y-2.5 text-sm text-stone-500">
+          <ul class="space-y-2.5 text-sm text-[#455A50]">
             <li v-for="link in companyLinks" :key="link.label">
               <a
                 :href="link.href"
                 :target="link.external ? '_blank' : undefined"
                 :rel="link.external ? 'noopener noreferrer' : undefined"
-                class="hover:text-stone-900 transition-colors inline-flex items-center gap-1"
+                class="hover:text-[#11181C] transition-colors inline-flex items-center gap-1.5"
               >
                 {{ link.label }}
-                <UIcon v-if="link.external" name="lucide:external-link" class="w-3 h-3 text-stone-400" />
+                <UIcon v-if="link.external" name="lucide:external-link" class="w-3.5 h-3.5 text-[#7A9589]" />
               </a>
             </li>
           </ul>
@@ -97,12 +102,12 @@ const legalLinks = [
 
         <!-- Links: Legal -->
         <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-stone-900 mb-4">
-            Kepatuhan & Legal
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#11181C] mb-4">
+            Keamanan &amp; Legal
           </h4>
-          <ul class="space-y-2.5 text-sm text-stone-500">
+          <ul class="space-y-2.5 text-sm text-[#455A50]">
             <li v-for="link in legalLinks" :key="link.label">
-              <a :href="link.href" class="hover:text-stone-900 transition-colors">
+              <a :href="link.href" class="hover:text-[#11181C] transition-colors">
                 {{ link.label }}
               </a>
             </li>
@@ -111,10 +116,11 @@ const legalLinks = [
       </div>
 
       <!-- Bottom Bar -->
-      <div class="mt-12 pt-8 border-t border-stone-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
-        <p>© {{ currentYear }} {{ siteConfig.productName }}. Seluruh hak cipta dilindungi undang-undang.</p>
-        <p class="text-stone-400">
-          Dirancang untuk Standar Keamanan & Tata Kelola Lembaga Pendidikan Modern.
+      <div class="mt-12 pt-8 border-t border-[#E2EAE6] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#7A9589]">
+        <p>&copy; {{ currentYear }} Mustaka EduOS. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#5EC234]" />
+          <span>Server Cloud Aktif &amp; Terproteksi</span>
         </p>
       </div>
     </div>

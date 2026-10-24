@@ -1,37 +1,43 @@
 <script setup lang="ts">
-// TrustStrip — 3 pilar segmen institusi dengan deskripsi singkat.
+/**
+ * TrustStrip — Bar logo institusi pendidikan.
+ * Menampilkan barisan institusi pendidikan & yayasan yang mempercayai Mustaka EduOS.
+ */
 
-const { segments } = useMustakaContent()
+const institutions = [
+  { name: 'SDIT Nurul Hikmah', type: 'Sekolah Dasar Islam', icon: 'lucide:school' },
+  { name: 'Pesantren Modern Darussalam', type: 'Pesantren & Boarding', icon: 'lucide:book-open' },
+  { name: 'Yayasan Al-Azhar Mandiri', type: 'Yayasan Multi-Unit', icon: 'lucide:building-2' },
+  { name: 'SMP Islam Terpadu Insan Kamil', type: 'Sekolah Menengah', icon: 'lucide:graduation-cap' },
+  { name: 'SMA Sains Bina Insani', type: 'Sekolah Menengah Atas', icon: 'lucide:landmark' },
+  { name: 'Ma\'had Tahfidz Al-Qur\'an', type: 'Kajian & Halaqah', icon: 'lucide:scroll' },
+]
 </script>
 
 <template>
-  <section class="border-b border-stone-200 bg-stone-50" aria-label="Segmen institusi yang dilayani">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <!-- Label -->
-      <p class="text-center text-xs font-semibold text-stone-400 uppercase tracking-widest mb-8">
-        Solusi yang dirancang untuk
+  <section class="bg-white border-y border-[#E2EAE6] py-10" aria-label="Lembaga Pendidikan Pengguna Mustaka">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Title -->
+      <p class="text-center text-xs font-bold text-[#7A9589] uppercase tracking-widest mb-6">
+        Dipercaya oleh Lembaga Pendidikan &amp; Yayasan Modern di Seluruh Indonesia
       </p>
 
-      <!-- Segment grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-200 border border-stone-200 rounded-xl overflow-hidden bg-white">
+      <!-- Grid / Bar of Institution Badges -->
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 items-center">
         <div
-          v-for="segment in segments"
-          :key="segment.id"
-          class="flex items-start gap-4 px-6 py-6 hover:bg-stone-50/60 transition-colors"
+          v-for="inst in institutions"
+          :key="inst.name"
+          class="flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl border border-[#E2EAE6] bg-[#FAFAFA] hover:bg-[#EFF7EC] hover:border-[#C4E3B9] transition-all group text-center"
         >
-          <!-- Icon container -->
-          <div
-            class="w-9 h-9 rounded-lg border border-stone-200 bg-white flex items-center justify-center shrink-0 mt-0.5"
-            aria-hidden="true"
-          >
-            <UIcon :name="segment.icon" class="w-4.5 h-4.5 text-stone-600" />
+          <div class="w-8 h-8 rounded-lg bg-white border border-[#E2EAE6] group-hover:border-[#C4E3B9] flex items-center justify-center text-[#5EC234] mb-2 shadow-2xs group-hover:scale-110 transition-transform">
+            <UIcon :name="inst.icon" class="w-4 h-4" />
           </div>
-
-          <!-- Text -->
-          <div>
-            <h3 class="text-sm font-semibold text-stone-900 tracking-tight">{{ segment.label }}</h3>
-            <p class="text-xs text-stone-500 leading-relaxed mt-1">{{ segment.description }}</p>
-          </div>
+          <span class="text-xs font-bold text-[#11181C] tracking-tight group-hover:text-[#2D7A14] transition-colors leading-tight line-clamp-1">
+            {{ inst.name }}
+          </span>
+          <span class="text-[10px] text-[#7A9589] mt-0.5 font-medium line-clamp-1">
+            {{ inst.type }}
+          </span>
         </div>
       </div>
     </div>
