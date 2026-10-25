@@ -69,12 +69,12 @@ const pillars = [
 <template>
   <section
     id="solusi"
-    class="bg-[#FAFAFA] border-b border-[#E2EAE6] scroll-mt-20 py-20 lg:py-28"
+    class="bg-[#FAFAFA] border-b border-[#E2EAE6] scroll-mt-20 py-24 lg:py-32"
     aria-labelledby="solusi-heading"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
         <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF7EC] border border-[#C4E3B9] text-xs font-bold text-[#2D7A14] mb-4">
           <UIcon name="lucide:building-2" class="w-3.5 h-3.5" />
           Pilar Institusi
@@ -83,66 +83,70 @@ const pillars = [
           id="solusi-heading"
           class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#11181C] tracking-tight leading-tight"
         >
-          Dirancang Sempurna untuk 3 Pilar Pendidikan
+          Dirancang untuk 3 Model Lembaga Pendidikan
         </h2>
         <p class="mt-4 text-[#455A50] text-base sm:text-lg leading-relaxed">
-          Tidak ada pendekatan satu ukuran untuk semua. Mustaka beradaptasi dengan model tata kelola lembaga Anda.
+          Tidak ada pendekatan satu ukuran untuk semua. Mustaka beradaptasi secara fleksibel dengan model tata kelola lembaga Anda.
         </p>
       </div>
 
-      <!-- Kontainer Gelap 3 Kolom -->
-      <div class="rounded-3xl bg-[#11181C] p-6 sm:p-10 lg:p-12 shadow-2xl border border-stone-800 relative overflow-hidden">
-        <!-- Glow decoration inside dark container -->
+      <!-- Kontainer Gelap 3 Kolom yang Mewah & Lapang -->
+      <div class="rounded-3xl bg-[#11181C] p-8 sm:p-12 lg:p-14 shadow-2xl border border-stone-800 relative overflow-hidden">
+        <!-- Subtle radial glow decoration -->
         <div
-          class="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-[#5EC234]/10 blur-3xl pointer-events-none"
+          class="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-[#5EC234]/15 blur-3xl pointer-events-none"
+          aria-hidden="true"
+        />
+        <div
+          class="absolute -bottom-32 left-1/4 w-96 h-96 rounded-full bg-[#5EC234]/10 blur-3xl pointer-events-none"
           aria-hidden="true"
         />
 
-        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        <div class="relative grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
           <div
             v-for="pillar in pillars"
             :key="pillar.id"
-            class="flex flex-col justify-between rounded-2xl border p-7 transition-all duration-300"
+            class="flex flex-col justify-between rounded-2xl border p-8 transition-all duration-300"
             :class="[
               pillar.isPrimary
-                ? 'bg-white/10 border-[#5EC234] shadow-lg shadow-[#5EC234]/10 ring-1 ring-[#5EC234]/50'
+                ? 'bg-white/10 border-[#5EC234] shadow-xl shadow-[#5EC234]/10 ring-1 ring-[#5EC234]/40'
                 : 'bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/8',
             ]"
           >
             <div>
               <!-- Badge if primary / yayasan -->
-              <div v-if="pillar.isPrimary" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5EC234] text-white text-[10px] font-bold uppercase tracking-wider mb-4">
+              <div v-if="pillar.isPrimary" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#5EC234] text-white text-[10px] font-bold uppercase tracking-wider mb-5">
                 <UIcon name="lucide:sparkles" class="w-3 h-3" />
                 Paling Diminati Yayasan
               </div>
 
               <!-- Icon -->
               <div
-                class="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                :class="pillar.isPrimary ? 'bg-[#5EC234] text-white' : 'bg-white/10 text-[#5EC234] border border-white/10'"
+                class="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
+                :class="pillar.isPrimary ? 'bg-[#5EC234] text-white shadow-sm' : 'bg-white/10 text-[#5EC234] border border-white/10'"
               >
                 <UIcon :name="pillar.icon" class="w-6 h-6" />
               </div>
 
               <!-- Titles -->
-              <h3 class="text-xl font-bold text-white tracking-tight">
+              <h3 class="text-xl font-extrabold text-white tracking-tight">
                 {{ pillar.title }}
               </h3>
               <p class="text-xs text-[#5EC234] font-semibold mt-1">
                 {{ pillar.subtitle }}
               </p>
-              <p class="text-xs text-[#A3C9A8] mt-3 leading-relaxed">
+              <p class="text-xs sm:text-sm text-[#A3C9A8] mt-3.5 leading-relaxed">
                 {{ pillar.description }}
               </p>
 
               <!-- Persona Target -->
-              <div class="inline-flex items-center gap-1.5 mt-4 px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] font-medium text-stone-300">
+              <div class="inline-flex items-center gap-1.5 mt-4 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs font-medium text-stone-300">
                 <UIcon name="lucide:user-check" class="w-3.5 h-3.5 text-[#5EC234]" />
                 <span>{{ pillar.target }}</span>
               </div>
 
               <!-- Highlights list -->
-              <div class="mt-6 pt-5 border-t border-white/10 space-y-2.5">
+              <div class="mt-7 pt-6 border-t border-white/10 space-y-3">
                 <div
                   v-for="h in pillar.highlights"
                   :key="h"
@@ -157,10 +161,10 @@ const pillars = [
             <!-- CTA Button -->
             <div class="mt-8 pt-6 border-t border-white/10">
               <button
-                class="w-full py-3 px-4 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
+                class="w-full py-3.5 px-4 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
                 :class="[
                   pillar.isPrimary
-                    ? 'bg-[#5EC234] hover:bg-[#4BAB26] text-white shadow-md shadow-[#5EC234]/20'
+                    ? 'bg-[#5EC234] hover:bg-[#4BAB26] text-white shadow-md shadow-[#5EC234]/25'
                     : 'bg-white/10 hover:bg-white/20 text-white border border-white/15',
                 ]"
                 @click="$emit('open-lead-modal')"

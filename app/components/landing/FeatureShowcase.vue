@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /**
  * FeatureShowcase — Core Features Section.
- * Grid 4 kartu fitur berwarna soft mint (#EFF7EC) dengan tombol panah bulat di bagian bawah.
- * Klik pada kartu membuka/menampilkan visualisasi interaktif modul terkait.
+ * 4 kartu fitur soft mint (#EFF7EC) dengan tata letak lapang, elevasi halus,
+ * dan tombol panah bulat interaktif untuk membuka pratinjau live modul terkait.
  */
 
 import { features, type Feature, type FeatureVisualizationType } from '~/data/features'
@@ -11,7 +11,7 @@ import VizAuditLog from '~/components/landing/viz/VizAuditLog.vue'
 import VizLearningGroup from '~/components/landing/viz/VizLearningGroup.vue'
 import VizMultiTenant from '~/components/landing/viz/VizMultiTenant.vue'
 
-// Pick the 4 primary core features
+// 4 core features
 const coreFeatures = [
   features.find((f) => f.id === 'student-360')!,
   features.find((f) => f.id === 'learning-group')!,
@@ -39,26 +39,22 @@ const currentViz = computed(() =>
 )
 
 function selectFeature(id: string) {
-  if (activeId.value === id) {
-    activeId.value = null // Toggle
-  } else {
-    activeId.value = id
-  }
+  activeId.value = activeId.value === id ? null : id
 }
 </script>
 
 <template>
   <section
     id="fitur"
-    class="bg-[#FAFAFA] border-b border-[#E2EAE6] scroll-mt-20 py-20 lg:py-28"
+    class="bg-[#FAFAFA] border-b border-[#E2EAE6] scroll-mt-20 py-24 lg:py-32"
     aria-label="Core Features Mustaka EduOS"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center max-w-2xl mx-auto mb-16">
+      <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
         <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF7EC] border border-[#C4E3B9] text-xs font-bold text-[#2D7A14] mb-4">
           <UIcon name="lucide:layers" class="w-3.5 h-3.5" />
-          Fitur Unggulan
+          Fitur Utama Platform
         </span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#11181C] tracking-tight leading-tight">
           Satu Sistem. Semua Kebutuhan Institusi Pendidikan.
@@ -68,23 +64,23 @@ function selectFeature(id: string) {
         </p>
       </div>
 
-      <!-- Grid 4 kartu fitur berwarna soft mint -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- 4 Core Feature Cards (lapang & bernapas) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7 mb-10">
         <div
           v-for="feature in coreFeatures"
           :key="feature.id"
-          class="group relative flex flex-col justify-between rounded-2xl border transition-all duration-300 p-6 sm:p-7 cursor-pointer"
+          class="group relative flex flex-col justify-between rounded-3xl border transition-all duration-300 p-7 sm:p-8 cursor-pointer select-none"
           :class="[
             activeId === feature.id
-              ? 'bg-[#11181C] border-[#11181C] shadow-xl translate-y-[-2px]'
-              : 'bg-[#EFF7EC] border-[#C4E3B9] hover:border-[#5EC234] hover:shadow-md hover:bg-[#E5F3E1]',
+              ? 'bg-[#11181C] border-[#11181C] shadow-2xl scale-[1.02] -translate-y-1'
+              : 'bg-[#EFF7EC] border-[#C4E3B9]/80 hover:border-[#5EC234] hover:shadow-lg hover:bg-[#E5F3E1]',
           ]"
           @click="selectFeature(feature.id)"
         >
           <div>
             <!-- Icon -->
             <div
-              class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-colors shadow-2xs"
+              class="w-12 h-12 rounded-2xl flex items-center justify-center mb-6 transition-colors shadow-2xs"
               :class="[
                 activeId === feature.id
                   ? 'bg-[#5EC234] text-white'
@@ -96,7 +92,7 @@ function selectFeature(id: string) {
 
             <!-- Title & description -->
             <h3
-              class="text-base sm:text-lg font-bold tracking-tight mb-2.5 transition-colors leading-snug"
+              class="text-lg font-bold tracking-tight mb-3 transition-colors leading-snug"
               :class="activeId === feature.id ? 'text-white' : 'text-[#11181C]'"
             >
               {{ feature.label }}
@@ -109,10 +105,13 @@ function selectFeature(id: string) {
             </p>
           </div>
 
-          <!-- Tombol panah bulat di bagian bawah -->
-          <div class="mt-8 pt-4 flex items-center justify-between border-t" :class="activeId === feature.id ? 'border-white/10' : 'border-[#C4E3B9]/60'">
+          <!-- Bottom Round Arrow Button -->
+          <div
+            class="mt-8 pt-5 flex items-center justify-between border-t"
+            :class="activeId === feature.id ? 'border-white/10' : 'border-[#C4E3B9]/60'"
+          >
             <span
-              class="text-xs font-semibold"
+              class="text-xs font-bold"
               :class="activeId === feature.id ? 'text-[#5EC234]' : 'text-[#455A50] group-hover:text-[#11181C]'"
             >
               {{ activeId === feature.id ? 'Tutup Pratinjau' : 'Lihat Pratinjau' }}
@@ -142,23 +141,23 @@ function selectFeature(id: string) {
       >
         <div
           v-if="activeFeature"
-          class="rounded-2xl border border-[#E2EAE6] bg-white shadow-xl overflow-hidden mt-6"
+          class="rounded-3xl border border-[#E2EAE6] bg-white shadow-2xl overflow-hidden mt-8 ring-1 ring-black/5"
         >
           <!-- Panel Top Bar -->
-          <div class="flex items-center justify-between px-6 py-4 bg-[#F3F8F5] border-b border-[#E2EAE6]">
+          <div class="flex items-center justify-between px-6 sm:px-8 py-5 bg-[#F8FAFC] border-b border-[#E2EAE6]">
             <div class="flex items-center gap-3">
               <span class="w-2.5 h-2.5 rounded-full bg-[#5EC234] animate-ping" />
               <div>
-                <span class="text-xs font-bold text-[#11181C]">
+                <span class="text-sm font-bold text-[#11181C]">
                   Live Demo Modul: {{ activeFeature.label }}
                 </span>
-                <span class="text-[11px] text-[#7A9589] block">
+                <span class="text-xs text-[#7A9589] block mt-0.5">
                   {{ activeFeature.headline }}
                 </span>
               </div>
             </div>
             <button
-              class="text-xs font-semibold text-[#7A9589] hover:text-[#11181C] px-3 py-1.5 rounded-lg hover:bg-white border border-transparent hover:border-[#E2EAE6] transition-colors"
+              class="text-xs font-semibold text-[#7A9589] hover:text-[#11181C] px-3.5 py-1.5 rounded-xl hover:bg-white border border-transparent hover:border-[#E2EAE6] transition-colors cursor-pointer"
               @click="activeId = null"
             >
               Tutup
@@ -166,7 +165,7 @@ function selectFeature(id: string) {
           </div>
 
           <!-- Dynamic Viz Component -->
-          <div class="p-6 sm:p-8 bg-[#FAFAFA]">
+          <div class="p-6 sm:p-10 bg-[#FAFAFA]">
             <component :is="currentViz" />
           </div>
         </div>

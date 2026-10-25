@@ -1,9 +1,9 @@
 <script setup lang="ts">
 /**
  * PricingSection — 3 Kartu Harga:
- * 1. Starter (Paket Sekolah Mandiri)
- * 2. Pro (Paket Sekolah Unggulan) -> Highlight GELAP / Populer (#11181C + #5EC234)
- * 3. Enterprise (Paket Yayasan & Multi-Sekolah)
+ * 1. Starter (Sekolah Mandiri)
+ * 2. Pro (Sekolah Unggulan) -> Highlight GELAP / Populer (#11181C + #5EC234)
+ * 3. Yayasan (Multi-Sekolah & Enterprise)
  */
 
 defineEmits<{
@@ -13,8 +13,8 @@ defineEmits<{
 const tiers = [
   {
     id: 'starter',
-    name: 'Sekolah Mandiri (Starter)',
-    tagline: 'UNTUK 1 UNIT SEKOLAH KECIL',
+    name: 'Sekolah Mandiri',
+    tagline: 'UNTUK 1 UNIT SEKOLAH',
     target: 'SD/SMP/Madrasah swasta di bawah 250 siswa yang ingin tertib administrasi.',
     priceLabel: 'Mulai Terjangkau',
     priceNote: 'Disesuaikan per jumlah siswa aktif / tahun',
@@ -28,19 +28,18 @@ const tiers = [
       'Penyimpanan Cloud Terenkripsi',
     ],
     cta: 'Mulai Konsultasi Gratis',
-    ctaVariant: 'secondary',
   },
   {
     id: 'pro',
-    name: 'Sekolah Unggulan (Pro)',
+    name: 'Sekolah Unggulan',
     tagline: 'PALING DIMINATI SEKOLAH & PESANTREN',
     target: 'Sekolah Swasta Menengah & Pesantren (250 – 800 siswa) butuh sistem mutakhir.',
     priceLabel: 'Paket Terpopuler',
     priceNote: 'Investasi terbaik dengan pendampingan penuh',
-    isPopular: true, // HIGHLIGHT GELAP / POPULER
+    isPopular: true,
     features: [
       'Seluruh fitur Paket Starter',
-      'Audit Log Keamanan Tingkat Perbankan (Immutable)',
+      'Audit Log Keamanan Kelas Perbankan (Immutable)',
       'Modul Halaqah Pesantren & Kelompok Belajar',
       'Multi-Kontak Orang Tua & Penandaan Darurat',
       'Pendampingan Migrasi Data dari Excel sampai Tuntas',
@@ -48,11 +47,10 @@ const tiers = [
       'Pelatihan Guru & Staf via Zoom Interaktif',
     ],
     cta: 'Jadwalkan Sesi Demo',
-    ctaVariant: 'primary',
   },
   {
     id: 'enterprise',
-    name: 'Yayasan & Multi-Sekolah',
+    name: 'Yayasan & Multi-Unit',
     tagline: 'HOLDING & YAYASAN BESAR',
     target: 'Yayasan Pendidikan menaungi 2 atau lebih unit sekolah / kampus.',
     priceLabel: 'Solusi Kustom',
@@ -65,10 +63,9 @@ const tiers = [
       'Custom Subdomain & Identitas Sekolah',
       'Pelatihan Staf Tatap Muka / On-Site',
       'Dedicated Account Manager Khusus',
-      'Service Level Agreement (SLA) & Backup Khusus',
+      'Service Level Agreement (SLA) & Backup Prioritas',
     ],
     cta: 'Hubungi Tim Enterprise',
-    ctaVariant: 'secondary',
   },
 ]
 </script>
@@ -76,34 +73,34 @@ const tiers = [
 <template>
   <section
     id="harga"
-    class="bg-white border-b border-[#E2EAE6] scroll-mt-20 py-20 lg:py-28"
+    class="bg-white border-b border-[#E2EAE6] scroll-mt-20 py-24 lg:py-32"
     aria-label="Pilihan Paket & Investasi"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="max-w-2xl mx-auto text-center mb-16">
+      <div class="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
         <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#EFF7EC] border border-[#C4E3B9] text-xs font-bold text-[#2D7A14] mb-4">
           <UIcon name="lucide:tag" class="w-3.5 h-3.5" />
           Investasi Transparan
         </span>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#11181C] tracking-tight leading-tight">
-          Paket Investasi yang Jelas &amp; Sesuai Kebutuhan
+          Paket Investasi yang Jelas &amp; Terukur
         </h2>
         <p class="mt-4 text-base sm:text-lg text-[#455A50] leading-relaxed">
-          Pilih paket yang paling sesuai dengan skala dan rencana pertumbuhan institusi pendidikan Anda.
+          Pilih paket yang paling cocok dengan ukuran dan tahap pertumbuhan lembaga pendidikan Anda. Tanpa biaya tersembunyi.
         </p>
       </div>
 
-      <!-- 3 Kartu Harga -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <!-- 3 Pricing Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch max-w-6xl mx-auto">
         <div
           v-for="tier in tiers"
           :key="tier.id"
-          class="relative flex flex-col justify-between rounded-3xl p-8 sm:p-9 transition-all duration-300"
+          class="relative flex flex-col justify-between rounded-3xl p-8 sm:p-10 transition-all duration-300"
           :class="[
             tier.isPopular
               ? 'bg-[#11181C] text-white border-2 border-[#5EC234] shadow-2xl scale-[1.02] lg:-translate-y-2'
-              : 'bg-[#FAFAFA] text-[#11181C] border border-[#E2EAE6] hover:border-[#C4E3B9] hover:shadow-lg',
+              : 'bg-[#FAFAFA] text-[#11181C] border border-[#E2EAE6] hover:border-[#C4E3B9] hover:shadow-xl',
           ]"
         >
           <!-- Popular Badge for Pro Tier -->
@@ -112,11 +109,11 @@ const tiers = [
             class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-[#5EC234] text-white text-xs font-extrabold tracking-wider uppercase shadow-md flex items-center gap-1.5"
           >
             <UIcon name="lucide:flame" class="w-3.5 h-3.5" />
-            Paling Populer
+            Paling Diminati
           </div>
 
           <div>
-            <!-- Tagline / Badge -->
+            <!-- Tagline -->
             <div class="mb-4">
               <span
                 class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-md"
@@ -135,7 +132,7 @@ const tiers = [
             </h3>
 
             <p
-              class="text-xs sm:text-sm mt-3 leading-relaxed"
+              class="text-xs sm:text-sm mt-3 leading-relaxed min-h-10"
               :class="tier.isPopular ? 'text-stone-300' : 'text-[#455A50]'"
             >
               {{ tier.target }}
@@ -166,9 +163,9 @@ const tiers = [
                 class="text-xs font-bold uppercase tracking-wider"
                 :class="tier.isPopular ? 'text-[#5EC234]' : 'text-[#11181C]'"
               >
-                Fitur Unggulan:
+                Fitur yang Termasuk:
               </p>
-              <ul class="space-y-2.5 text-xs sm:text-sm">
+              <ul class="space-y-3 text-xs sm:text-sm">
                 <li
                   v-for="(f, idx) in tier.features"
                   :key="idx"
@@ -206,8 +203,8 @@ const tiers = [
       </div>
 
       <!-- Trust note below pricing -->
-      <div class="mt-14 text-center max-w-2xl mx-auto p-4 rounded-2xl bg-[#F3F8F5] border border-[#E2EAE6] text-xs text-[#455A50]">
-        <p class="font-semibold text-[#11181C]">Butuh implementasi khusus untuk yayasan dengan lebih dari 5 unit sekolah?</p>
+      <div class="mt-16 text-center max-w-2xl mx-auto p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2EAE6] text-xs text-[#455A50]">
+        <p class="font-bold text-[#11181C]">Butuh implementasi khusus untuk yayasan dengan lebih dari 5 unit sekolah?</p>
         <p class="mt-1">Tim solusi Mustaka siap menyusun arsitektur multi-tenant khusus dengan jaminan migrasi data 100% aman.</p>
       </div>
     </div>

@@ -2,17 +2,17 @@
 /**
  * index.vue — Landing page utama Mustaka EduOS.
  *
- * Mengikuti urutan visual persis dari desain Figma & mustaka_lp.md:
- * 1. Header - Sticky Navbar (`#fitur`, `#solusi`, `#transformasi`, `#harga`, `#faq`)
- * 2. Hero Section (Headline + portal.mustaka.id Profil Siswa 360° + 3 floating pills)
- * 3. Section - Trust Strip (Bar logo institusi pendidikan)
- * 4. Core Features Section (Grid 4 kartu fitur soft mint dengan panah bulat)
- * 5. Section - Mid-Page Forest Green ("Masih Bergantung pada File Excel yang Tercecer?")
- * 6. Institution Pillars Section (Kontainer gelap 3 kolom K-12, Pesantren, Yayasan)
- * 7. Transformasi & FAQ Section (Sebelum vs Sesudah Mustaka & Accordion FAQ)
- * 8. Pricing Section (3 kartu harga: Starter, Pro highlight gelap, Enterprise)
- * 9. Section - Pre-Footer Mint CTA & Main Footer
- * 10. Dialog - Demo Scheduling Modal Overlay (Fast WhatsApp Lead Flow)
+ * Alur Halaman Ramping (6 Section Utama yang Padat Bobot & Bernapas):
+ * 1. Hero Section & Trust Strip
+ * 2. Komparasi Masalah & Transformasi Nyata (Cara Lama vs Dengan Mustaka)
+ * 3. Core Features (4 Modul Utama dengan Tab Visualisasi Interaktif)
+ * 4. Pilar Institusi (Sekolah K-12, Pesantren & Boarding, Yayasan Multi-Sekolah)
+ * 5. Paket Harga Transparan (3 Tier: Starter, Pro, Yayasan)
+ * 6. FAQ Keamanan Data (Row-Level Security) & Final CTA WhatsApp Sales
+ *
+ * Plus:
+ * - Header Sticky Navbar & Main Footer
+ * - Dialog Demo Scheduling Modal Overlay (Fast WhatsApp Lead Flow)
  */
 
 const { siteConfig, currentHero } = useMustakaContent()
@@ -40,33 +40,28 @@ useSeoMeta({
 
 <template>
   <div class="min-h-screen bg-[#FAFAFA] text-[#11181C] font-sans antialiased selection:bg-[#EFF7EC] selection:text-[#2D7A14]">
-    <!-- 1. Header: Sticky Navbar -->
+    <!-- Header: Sticky Navbar -->
     <LandingTheNavbar @open-lead-modal="openLeadModal" />
 
     <main id="main-content">
-      <!-- 2. Hero Section -->
+      <!-- 1. Hero Section & Social Proof Trust Strip -->
       <LandingHeroSection @open-lead-modal="openLeadModal" />
-
-      <!-- 3. Section: Trust Strip (Bar logo institusi) -->
       <LandingTrustStrip />
 
-      <!-- 4. Core Features Section (Grid 4 kartu mint + panah bulat) -->
+      <!-- 2. Komparasi Masalah & Transformasi Nyata (Cara Lama vs Dengan Mustaka) -->
+      <LandingTransformationSection />
+
+      <!-- 3. Core Features (4 Modul Utama dengan Tab Visualisasi Interaktif) -->
       <LandingFeatureShowcase />
 
-      <!-- 5. Section: Mid-Page Forest Green Banner -->
-      <LandingProblemSection />
-
-      <!-- 6. Institution Pillars Section (Kontainer gelap 3 kolom) -->
+      <!-- 4. Pilar Institusi (Sekolah Formal K-12, Pesantren, Yayasan) -->
       <LandingUseCaseSection @open-lead-modal="openLeadModal" />
 
-      <!-- 7. Transformasi & FAQ Section -->
-      <LandingTransformationSection />
-      <LandingFaqSection />
-
-      <!-- 8. Pricing Section (3 kartu harga, Pro highlight gelap) -->
+      <!-- 5. Paket Harga Transparan (3 Tier: Starter, Pro, Yayasan) -->
       <LandingPricingSection @open-lead-modal="openLeadModal" />
 
-      <!-- 9. Section: Pre-Footer Mint CTA -->
+      <!-- 6. FAQ Keamanan Data & Final CTA WhatsApp Sales -->
+      <LandingFaqSection />
       <LandingCtaBanner @open-lead-modal="openLeadModal" />
     </main>
 
