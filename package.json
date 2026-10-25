@@ -19,9 +19,12 @@
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.7.0",
     "@types/node": "^22.10.2",
     "typescript": "^5.7.2",
     "vue-tsc": "^2.2.0"
+  },
+  "overrides": {
+    "h3": "^1.15.11"
   }
 }
